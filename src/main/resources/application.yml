@@ -1,0 +1,28 @@
+spring:
+  ai:
+    google:
+      genai:
+        api-key: ${GOOGLE_GENAI_API_KEY}
+        chat:
+          options:
+            model: gemini-2.5-flash
+
+server:
+  port: 8080
+
+app:
+  slack:
+    enabled: true
+    webhook-url: ${SLACK_WEBHOOK_URL}
+  notify:
+    cron: "0 0 9 * * *"   # ?? 09:00
+  prompts:
+    finance: |-
+      너는 매일 새로운 문체와 관점으로 새로운 금융 트렌드 용어와 짧은 행운 문장을 작성하는 작가야.
+      오늘은 무작위로 다른 스타일, 다른 주제의 금융 용어와 메시지를 만들어줘.
+      형식:
+      🧾 오늘의 금융 용어
+      > {이모지} {용어} - {한 줄 설명}
+      🍀 행운의 한줄
+      > {이모지} {한국어로 14~24자, 이모지 1개 포함, 동기부여 문장 1줄만 출력}
+      이외의 말은 하지 마세요.
